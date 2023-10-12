@@ -7,16 +7,21 @@
     <link rel="stylesheet" href="./css/style.css">
     
     
-    <title>Simulador</title>
+    <title>Buscador de Películas</title>
 </head>
 <body>
     
-    
-    <h1>Números Pares</h1>
-    <p>Ingrese un número y mostraremos todos los números pares desde 1 hasta ese número.</p>
-    <input type="number" id="numeroInput">
-    <button id="mostrarButton">Mostrar Números Pares</button>
-    <p id="resultado"></p>
+     <h1>Buscador de Películas</h1>
+    <label for="genre">Seleccione un género:</label>
+    <select id="genre">
+        <option value="Acción">Acción</option>
+        <option value="Comedia">Comedia</option>
+        <option value="Drama">Drama</option>
+        <option value="Ciencia Ficción">Ciencia Ficción</option>
+        <option value="Aventura">Aventura</option>
+    </select>
+    <button id="searchButton">Buscar</button>
+    <div id="result"></div>
 
   <script src="./js/script.js"></script>
 </body>

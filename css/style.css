@@ -1,52 +1,54 @@
-/* Estilos generales */
+/* Estilos generales para el cuerpo de la página */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     text-align: center;
-    margin: 0;
-    padding: 0;
+    background-color: #f2f2f2;
 }
 
+/* Estilos para el título */
 h1 {
     color: #333;
 }
 
-/* Contenedor de la calculadora */
-.container {
-    max-width: 400px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+/* Estilos para la etiqueta de selección de género */
+label {
+    font-weight: bold;
+    font-size: 18px;
 }
 
-/* Inputs y botón */
-input[type="number"], select {
-    width: 100%;
+/* Estilos para el menú desplegable de género */
+select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+/* Estilos para el botón de búsqueda */
+#searchButton {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Estilos para el resultado de la búsqueda */
+#result {
+    margin-top: 20px;
+}
+
+/* Estilos para la lista de películas */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Estilos para los elementos de la lista de películas */
+li {
+    background-color: #fff;
     padding: 10px;
     margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Resultado */
-p {
-    font-size: 24px;
-    margin-top: 20px;
-    color: #333;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
