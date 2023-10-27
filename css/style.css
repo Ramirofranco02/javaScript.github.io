@@ -1,54 +1,47 @@
-/* Estilos generales para el cuerpo de la página */
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f2f2f2;
-}
-
-/* Estilos para el título */
-h1 {
-    color: #333;
-}
-
-/* Estilos para la etiqueta de selección de género */
-label {
-    font-weight: bold;
-    font-size: 18px;
-}
-
-/* Estilos para el menú desplegable de género */
-select {
-    padding: 5px;
-    font-size: 16px;
-}
-
-/* Estilos para el botón de búsqueda */
-#searchButton {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-/* Estilos para el resultado de la búsqueda */
-#result {
-    margin-top: 20px;
-}
-
-/* Estilos para la lista de películas */
-ul {
-    list-style-type: none;
+    background-color: #f7f7f7;
+    margin: 0;
     padding: 0;
 }
 
-/* Estilos para los elementos de la lista de películas */
-li {
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#productos, #carrito {
     background-color: #fff;
-    padding: 10px;
-    margin: 5px 0;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    width: 45%;
+}
+
+#productos ul, #lista-carrito {
+    list-style: none;
+    padding: 0;
+}
+
+#productos li, #lista-carrito li {
+    margin: 10px 0;
+}
+
+#lista-carrito {
+    border: 1px solid #333;
+    padding: 10px;
+}
+
+#total {
+    font-weight: bold;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
 }

@@ -1,62 +1,100 @@
+document.addEventListener("DOMContentLoaded", () =>  {
+    const listaProductos = document.getElementById("lista-productos");
+    const listaCarrito = document.getElementById("lista-carrito");
+    const totalElement = document.getElementById("total");
+    const vaciarCarritoBtn = document.getElementById("vaciar-carrito");
 
-// Definir una lista de películas por género
-const peliculas = {
-    "Acción": ["Mad Max: Fury Road", "John Wick", "Die Hard"],
-    "Comedia": ["Superbad", "The Hangover", "Anchorman"],
-    "Drama": ["The Shawshank Redemption", "Forrest Gump", "The Godfather"],
-    "Ciencia Ficción": ["Blade Runner", "The Matrix", "Inception"],
-    "Aventura": ["Indiana Jones and the Last Crusade", "Pirates of the Caribbean", "Jurassic Park"]
-};
+    // Productos disponibles
+    const productos = [
+        { id: 1, nombre: "Camiseta Nike", precio: 29.99 },
+        { id: 2, nombre: "Zapatillas Adidas", precio: 79.99 },
+        { id: 3, nombre: "Pantalones Levi's", precio: 49.99 },
+        { id: 4, nombre: "Gorra New Era", precio: 19.99 },
+        { id: 5, nombre: "Reloj Casio", precio: 39.99 },
+    ];
 
-// Obtener elementos del DOM
-const genreSelect = document.getElementById("genre");
-const searchButton = document.getElementById("searchButton");
-const resultDiv = document.getElementById("result");
+    // Event listeners para productos
+    mostrarProductos();
 
-// Función para buscar películas por género con animación de desvanecimiento
-function buscarPeliculas() {
-    const selectedGenre = genreSelect.value;
-    const peliculasEnEseGenero = peliculas[selectedGenre];
+    // Event listener para vaciar carrito
+    vaciarCarritoBtn.addEventListener("click", vaciarCarrito);
 
-    if (peliculasEnEseGenero) {
-        let resultado = "<h2>Películas en " + selectedGenre + ":</h2>";
+    function mostrarProductos() {
+        productos.forEach(producto => {
+            const li = document.createElement("li");
+            li.innerHTML = `${producto.nombre} - $${producto.precio}
+            <input type="number" min="1" value="1">
+            <button class="agregar-carrito" data-id="${producto.id}">Agregar al Carrito</button>`;
+            listaProductos.appendChild(li);
+        });
+    }
 
-        // Copia y mezcla el array de películas al azar
-        const peliculasAleatorias = [...peliculasEnEseGenero];
-        for (let i = peliculasAleatorias.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [peliculasAleatorias[i], peliculasAleatorias[j]] = [peliculasAleatorias[j], peliculasAleatorias[i]];
+    // Función para agregar producto al carrito
+    function agregarProducto(producto, cantidad) {
+        const li = document.createElement("li");
+        li.innerHTML = `${producto.nombre} - $${producto.precio} x ${cantidad}`;
+        listaCarrito.appendChild(li);
+
+        // Calcular y actualizar total
+        let total = parseFloat(totalElement.textContent);
+        total += producto.precio * cantidad;
+        totalElement.textContent = total;
+
+        // Guardar carrito en JSON en el almacenamiento local
+        guardarCarritoEnLocalStorage();
+    }
+
+  // ...
+
+// Event listener para productos
+listaProductos.addEventListener("click", e => {
+    if (e.target.classList.contains("agregar-carrito")) {
+        const productoId = parseInt(e.target.getAttribute("data-id"));
+        const producto = productos.find(p => p.id === productoId);
+        const cantidad = parseInt(e.target.previousElementSibling.value);
+        if (producto && cantidad > 0) {
+            agregarProducto(producto, cantidad);
         }
+    }
+});
 
-        resultado += "<ul>";
+// Función para vaciar carrito
+function vaciarCarrito() {
+    while (listaCarrito.firstChild) {
+        listaCarrito.removeChild(listaCarrito.firstChild);
+    }
+    
+    totalElement.textContent = "0";
 
-        peliculasAleatorias.forEach((pelicula) => {
-            resultado += "<li style='display: none;'>" + pelicula + "</li>";
+    // Vaciar carrito en el almacenamiento local
+    localStorage.removeItem("carrito");
+}
+
+// Event listener para el botón de "Vaciar Carrito"
+vaciarCarritoBtn.addEventListener("click", vaciarCarrito);
+
+// Función para guardar el carrito en el almacenamiento local como JSON
+function guardarCarritoEnLocalStorage() {
+    const productosCarrito = Array.from(listaCarrito.children).map(item => item.textContent.trim());
+    localStorage.setItem("carrito", JSON.stringify(productosCarrito));
+}
+
+// Función para cargar carrito desde el almacenamiento local
+function cargarCarritoDesdeLocalStorage() {
+    const carrito = localStorage.getItem("carrito");
+    if (carrito) {
+        const productosCarrito = JSON.parse(carrito);
+        productosCarrito.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            listaCarrito.appendChild(li);
         });
-
-        resultado += "</ul>";
-        resultDiv.innerHTML = resultado;
-
-        // Aplicar animación de desvanecimiento
-        const listaPeliculas = resultDiv.querySelectorAll("li");
-        let delay = 0;
-        listaPeliculas.forEach((pelicula, index) => {
-            setTimeout(() => {
-                pelicula.style.display = "block";
-                pelicula.style.opacity = "0";
-                pelicula.style.transition = "opacity 0.5s";
-                setTimeout(() => {
-                    pelicula.style.opacity = "1";
-                }, 10);
-            }, delay);
-            delay += 300; // Añade un pequeño retraso para cada elemento de la lista
-        });
-    } else {
-        resultDiv.innerHTML = "<p>No se encontraron películas en ese género.</p>";
     }
 }
 
-// Agregar un manejador de eventos al botón de búsqueda
-searchButton.addEventListener("click", buscarPeliculas);
+// Mostrar productos al cargar la página
+mostrarProductos();
 
-
+// Cargar carrito desde el almacenamiento local al cargar la página
+cargarCarritoDesdeLocalStorage();
+});
