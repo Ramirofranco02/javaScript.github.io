@@ -1,47 +1,99 @@
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #92c5f8;
 }
 
-h1 {
-    text-align: center;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para el contenedor de comidas */
+#comidas-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* Estilos para las tarjetas de comida */
+.card {
+    width: 300px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos para las imágenes de las comidas */
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Estilos para el contenido de las tarjetas */
+.card-content {
+    padding: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
     color: #333;
 }
 
-#productos, #carrito {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
+.card p {
+    color: #777;
+}
+
+/* Estilos para la comida seleccionada */
+.comida-seleccionada {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.comida-seleccionada img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.comida-seleccionada h3 {
+    margin-top: 15px;
+    color: #333;
+}
+
+.comida-seleccionada p {
+    color: #555;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+/* Estilos para el botón de cerrar */
+.close-button {
     display: inline-block;
-    width: 45%;
-}
-
-#productos ul, #lista-carrito {
-    list-style: none;
-    padding: 0;
-}
-
-#productos li, #lista-carrito li {
-    margin: 10px 0;
-}
-
-#lista-carrito {
-    border: 1px solid #333;
-    padding: 10px;
-}
-
-#total {
-    font-weight: bold;
-}
-
-button {
-    background-color: #333;
+    padding: 10px 20px;
+    background-color: #343a40;
     color: #fff;
-    border: none;
-    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.close-button:hover {
+    background-color: #23272b;
 }
