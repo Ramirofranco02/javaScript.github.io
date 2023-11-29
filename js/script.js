@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
         { nombre: "Milanesa", descripcion: "carne empanada con pan rallado, frita ", imagen: "images/milanesas.jpg", tipo: "carne" },
         { nombre: "Papas fritas", descripcion: "papas cortadas en bastones, fritas ", imagen: "images/papas fritas.jpg", tipo: "casera" },
         { nombre: "Arroz con pollo", descripcion: "arroz con pollo y verduras", imagen: "images/hispanic-cuisine--arroz-con-pollo-in-pan--horizontal-top-view-602328680-5a9d40e0c5542e00365cdf8a.jpg", tipo: "casera" },
-        { nombre: "Sorrentinos", descripcion: "masa de huevo y harina rellena", imagen: "images/DSC04319.JPG.crdownload", tipo: "pasta" },
+        { nombre: "Sorrentinos", descripcion: "masa de huevo y harina rellena", imagen: "images/recipes.11657.jpeg", tipo: "pasta" },
         { nombre: "Ñoquis", descripcion: "masa hecha a base de papa", imagen: "images/noquis-786216.jpg", tipo: "pasta" },
-        { nombre: "Canelones", descripcion: "masa de rellena", imagen: "images/Canelones_WEB_OK_33_2.1.132_1214X2164.jpeg.crdownload", tipo: "pasta" },
+        { nombre: "Canelones", descripcion: "masa de rellena", imagen: "images/Canelones_de_Verdura_y_Carne_0000x0000_0.jpg.crdownload", tipo: "pasta" },
         // Agrega más comidas según sea necesario
 
     ];
